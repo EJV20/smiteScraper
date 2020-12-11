@@ -19,13 +19,14 @@ ops.add_argument('--log-level=3')
 # difficulty  = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[7]
 # released    = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[10]
 
+def get_chrome_driver(url):
+    driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=ops)
+    driver.get(url)
+    return driver
+
 def scrape_gods():
     godUrl = "https://www.smitefire.com/smite/gods"
-
-    print(chromedriver)
-
-    driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=ops)
-    driver.get(godUrl)
+    driver = get_chrome_driver(godUrl)
 
     i = 1
     elem = "init"
@@ -48,8 +49,7 @@ def scrape_gods():
 def scrape_items():
     itemUrl = "https://www.smitefire.com/smite/items"
 
-    driver = webdriver.Chrome(executable_path=chromedriver)
-    driver.get(itemUrl)
+    driver = get_chrome_driver(itemUrl)
 
     i = 1
     elem = "init"
