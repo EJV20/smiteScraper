@@ -10,6 +10,15 @@ ops.add_argument('--headless')
 ops.add_argument('--disable_gpu')
 ops.add_argument('--log-level=3')
 
+# url         = https://smite.gamepedia.com/List_of_gods
+# god         = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[2]/a
+# pantheon    = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[3]/a[2]
+# attack type = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[4]/a[2]
+# power type  = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[5]/a[2]
+# class       = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[6]/a[2]
+# difficulty  = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[7]
+# released    = //*[@id="mw-content-text"]/div/table/tbody/tr[1]/td[10]
+
 def scrape_gods():
     godUrl = "https://www.smitefire.com/smite/gods"
 
