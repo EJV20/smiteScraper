@@ -3,7 +3,7 @@ import sys
 from random import seed
 from random import randint
 
-from webscraper import scrape_gods
+from webscraper import scrape_gods, scrape_gods_plus
 from cli_handler import getDictionary
 
 
