@@ -9,7 +9,7 @@ from cli_handler import getDictionary
 
 args = getDictionary(sys.argv)
 print(args)
-gods = scrape_gods()
+gods = scrape_gods_plus()
 godTeam = []
 if "num" in args:
     num_team = int(args["num"])
