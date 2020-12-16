@@ -3,13 +3,12 @@ import sys
 from random import seed
 from random import randint
 
-from webscraper import scrape_gods, scrape_gods_plus
 from cli_handler import getDictionary
 
 
 args = getDictionary(sys.argv)
 print(args)
-gods = scrape_gods_plus()
+gods = []
 godTeam = []
 if "num" in args:
     num_team = int(args["num"])
