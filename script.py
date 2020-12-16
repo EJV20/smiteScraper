@@ -2,13 +2,19 @@ import sys
 
 from random import seed
 from random import randint
+import json
 
 from cli_handler import getDictionary
 
 
 args = getDictionary(sys.argv)
 print(args)
-gods = []
+
+data = {}
+with open("gods.json", "r") as f:
+    data = json.load(f)
+gods = list(data.keys())
+
 godTeam = []
 if "num" in args:
     num_team = int(args["num"])
