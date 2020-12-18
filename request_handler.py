@@ -28,13 +28,14 @@ def url_builder(session, method, lang):
     sig = create_signature(method=method)
     url = se + method + rf + "/" + dev_id + "/" + sig + "/"
     if session is None:
-        print("No Session")
+        print("URL without session Session")
         url = url + timestamp()
     else:
-        print("Session")
+        print("URL With Session")
         url = url + session + "/" + timestamp()
 
     if lang is not None:
+        print("URL With lang")
         url = url + "/" + lang
 
     return url
@@ -42,7 +43,7 @@ def url_builder(session, method, lang):
 def test_session(session):
     url = url_builder(session=session, method="testsession", lang=None)
     t = requests.get(url)
-    return t.status_code
+    return t.text
 
 
 def create_session():
@@ -79,8 +80,10 @@ def get_gods(session):
 def get_patch(session):
     url = url_builder(session=session, method="getpatchinfo", lang=None)
     r = requests.get(url)
+    print(r.status_code)
+    print(r.text)
     version = json.loads(r.text)["version_string"]
-    print(version)
+    print("Version: " + str(version))
     return version
 
 

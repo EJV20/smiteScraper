@@ -23,7 +23,7 @@ def get_session():
     else:
         print("Testing Session")
         code = rh.test_session(session=session)
-        if str(code) != "200":
+        if "Invalid session id" in str(code):
             print("Session no longer active, Created Session")
             session = rh.create_session()
             write_session(session=session)
@@ -41,6 +41,8 @@ def handle_patches(session):
         if len(lines) > 0:
             patch_saved = str(lines[0].rstrip())
 
+    print("Curr Patch: " + str(curr_patch))
+    print("Patch Saved: " + str(patch_saved))
     if float(curr_patch) > float(patch_saved):
         with open("patch.txt", "w") as f:
             f.write(str(curr_patch))
@@ -72,13 +74,15 @@ def get_god_data(session):
     data = {}
     with open("gods.json", "r") as f:
         data = json.load(f)
-    gods = list(data.keys())
-    return gods
+
+    return data
 
 
 
 def get_results(args, gods):
     godTeam = []
+    gods = list(gods.keys())
+    print("\n Team is \n")
     if "num" in args:
         num_team = int(args["num"])
         i = 0
