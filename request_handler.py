@@ -42,15 +42,15 @@ def url_builder(session, method, lang):
 def test_session(session):
     url = url_builder(session=session, method="testsession", lang=None)
     t = requests.get(url)
-    print(t.status_code)
-    print(t.content)
+    return t.status_code
 
 
 def create_session():
     url = url_builder(session=None, method="createsession", lang=None)
     print("URL: " + url)
     r = requests.get(url)
-    return r
+    session = get_session_id(session_response=r)
+    return session
 
 def get_session_id(session_response):
     session_json = json.loads(session_response.content)
@@ -76,11 +76,19 @@ def get_gods(session):
         json.dump(d, f, ensure_ascii=False, sort_keys=True, indent=2)
 
 
+def get_patch(session):
+    url = url_builder(session=session, method="getpatchinfo", lang=None)
+    r = requests.get(url)
+    version = json.loads(r.text)["version_string"]
+    print(version)
+    return version
+
+
 def main():
-    session_response = create_session()
-    session_id = get_session_id(session_response=session_response)
+    session_id = create_session()
     test_session(session=session_id)
     get_gods(session=session_id)
+    get_patch(session=session_id)
 
 
 if __name__ == "__main__":

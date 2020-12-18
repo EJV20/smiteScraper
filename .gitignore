@@ -4,3 +4,5 @@ __pycache__/webscraper.cpython-39.pyc
 config.py
 __pycache__/cli_handler.cpython-39.pyc
 __pycache__/config.cpython-39.pyc
+__pycache__/request_handler.cpython-39.pyc
+debug.log
