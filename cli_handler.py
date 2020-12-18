@@ -3,6 +3,8 @@ help_val = """
 Help Page
 
 num=<number of random gods to get>
+
+panth=<pantheon of gods you want on your team>
 """
 
 

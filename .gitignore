@@ -6,3 +6,5 @@ __pycache__/cli_handler.cpython-39.pyc
 __pycache__/config.cpython-39.pyc
 __pycache__/request_handler.cpython-39.pyc
 debug.log
+__pycache__/team_builder.cpython-39.pyc
+__pycache__/*

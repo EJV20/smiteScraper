@@ -1,9 +1,8 @@
 import sys
 
-from random import seed
-from random import randint
 import json
 import request_handler as rh
+import team_builder as tb
 
 from cli_handler import getDictionary
 
@@ -78,37 +77,12 @@ def get_god_data(session):
     return data
 
 
-
-def get_results(args, gods):
-    godTeam = []
-    gods = list(gods.keys())
-    print("\n Team is \n")
-    if "num" in args:
-        num_team = int(args["num"])
-        i = 0
-        while i < num_team:
-            seed()
-            x = randint(0, len(gods) - 1)
-            newGod = gods[x]
-            if newGod not in godTeam:
-                godTeam.append(newGod)
-                i += 1
-    else:
-        seed()
-        x = randint(0, len(gods) - 1)
-        godTeam.append(gods[x])
-
-
-    for gt in godTeam:
-        print(gt)
-
-
 def main():
     args = get_args_in_dict()
     session = get_session()
     god_data = get_god_data(session=session)
 
-    get_results(args, god_data)
+    tb.get_results(args, god_data)
 
 
 if __name__ == "__main__":
