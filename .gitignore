@@ -8,3 +8,4 @@ __pycache__/request_handler.cpython-39.pyc
 debug.log
 __pycache__/team_builder.cpython-39.pyc
 __pycache__/*
+session.txt
