@@ -9,11 +9,20 @@ def filter_on_panth(panth, g):
             d[god] = god
     
     return d
+    
+
+def get_num(args):
+    if "num" in args:
+        return int(args["num"])
+        
+    return 5
 
 
 
 def get_results(args, gods):
     godTeam = []
+    
+    num = get_num(args)
 
     if "panth" in args:
         pantheon = args["panth"]
@@ -21,25 +30,20 @@ def get_results(args, gods):
 
     gods = list(gods.keys())
 
-    if len(gods) < int(args["num"]):
-        args["num"] = len(gods)
+    if len(gods) < num:
+        num = len(gods)
 
     print("\n Team is \n")
-    if "num" in args:
-        num_team = int(args["num"])
-        i = 0
-        while i < num_team:
-            seed()
-            x = randint(0, len(gods) - 1)
-            newGod = gods[x]
-            if newGod not in godTeam:
-                godTeam.append(newGod)
-                i += 1
-    else:
+    i = 0
+    while i < num:
         seed()
         x = randint(0, len(gods) - 1)
-        godTeam.append(gods[x])
-
+        newGod = gods[x]
+        if newGod not in godTeam:
+            godTeam.append(newGod)
+            i += 1
 
     for gt in godTeam:
         print(gt)
+        
+    return gt

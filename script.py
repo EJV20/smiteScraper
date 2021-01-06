@@ -52,10 +52,13 @@ def handle_patches(session):
 
 def read_session():
     session = None
-    with open("session.txt", "r") as f:
-        lines = f.readlines()
-        if len(lines) > 0:
-            session = str(lines[0])
+    try:
+        with open("session.txt", "r+") as f:
+            lines = f.readlines()
+            if len(lines) > 0:
+                session = str(lines[0])
+    except:
+        return None
     
     return session
 
